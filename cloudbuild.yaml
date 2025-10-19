@@ -1,0 +1,81 @@
+# Cloud Build configuration for EcoGridIQ
+steps:
+  # Build and push backend Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/ecogrid-backend:$COMMIT_SHA', './backend']
+    dir: '.'
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/ecogrid-backend:$COMMIT_SHA']
+
+  # Deploy backend to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'ecogrid-backend'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/ecogrid-backend:$COMMIT_SHA'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
+      - '--memory'
+      - '2Gi'
+      - '--cpu'
+      - '2'
+      - '--max-instances'
+      - '10'
+      - '--set-env-vars'
+      - 'GOOGLE_CLOUD_PROJECT=$PROJECT_ID,BIGQUERY_DATASET=ecogrid_dwh,VERTEX_AI_LOCATION=us-central1'
+
+  # Build frontend
+  - name: 'node:18'
+    entrypoint: 'npm'
+    args: ['ci']
+    dir: './frontend'
+
+  - name: 'node:18'
+    entrypoint: 'npm'
+    args: ['run', 'build']
+    dir: './frontend'
+    env:
+      - 'NEXT_PUBLIC_API_URL=https://ecogrid-backend-${_SERVICE_HASH}-uc.a.run.app'
+
+  # Deploy frontend to Cloud Storage
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gsutil'
+    args:
+      - 'cp'
+      - '-r'
+      - './frontend/out/*'
+      - 'gs://$PROJECT_ID-ecogrid-frontend'
+
+  # Set up BigQuery dataset and tables
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        # Replace project ID placeholder in SQL files
+        sed "s/{project_id}/$PROJECT_ID/g" ./infrastructure/bigquery_schema.sql > /tmp/schema.sql
+        sed "s/{project_id}/$PROJECT_ID/g" ./infrastructure/feature_engineering.sql > /tmp/features.sql
+        
+        # Run BigQuery schema creation
+        bq query --use_legacy_sql=false < /tmp/schema.sql
+        bq query --use_legacy_sql=false < /tmp/features.sql
+
+# Substitution variables
+substitutions:
+  _SERVICE_HASH: '${SHORT_SHA}'
+
+# Build options
+options:
+  machineType: 'E2_HIGHCPU_8'
+  diskSizeGb: 100
+  logging: CLOUD_LOGGING_ONLY
+
+# Timeout
+timeout: '1200s'
