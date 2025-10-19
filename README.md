@@ -1,8 +1,8 @@
-# EcoGridIQ - AI-Powered Energy Analytics Platform
+# Powerlytics - AI-Powered Energy Analytics Platform
 
 ## 🏠 Overview
 
-EcoGridIQ helps homeowners and building managers reduce energy costs by learning usage patterns and providing AI-driven recommendations. The platform ingests IoT/smart meter data, performs forecasting and anomaly detection using Vertex AI, and provides a conversational assistant for actionable insights.
+Powerlytics helps homeowners and building managers reduce energy costs by learning usage patterns and providing AI-driven recommendations. The platform ingests IoT/smart meter data, performs forecasting and anomaly detection using Vertex AI, and provides a conversational assistant for actionable insights.
 
 ## 🏗️ Architecture
 
