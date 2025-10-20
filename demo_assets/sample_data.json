@@ -1,0 +1,282 @@
+{
+  "devices": [
+    {
+      "device_id": "device_001",
+      "device_name": "Main House Panel",
+      "device_type": "electrical_panel",
+      "location": "main_floor",
+      "current_power": 1250.5,
+      "total_energy_today": 15420.3,
+      "avg_power_last_24h": 1180.2,
+      "anomalies_last_24h": 1,
+      "status": "active"
+    },
+    {
+      "device_id": "device_002",
+      "device_name": "Garage Workshop",
+      "device_type": "workshop",
+      "location": "garage",
+      "current_power": 850.0,
+      "total_energy_today": 8920.1,
+      "avg_power_last_24h": 920.5,
+      "anomalies_last_24h": 0,
+      "status": "active"
+    },
+    {
+      "device_id": "device_003",
+      "device_name": "HVAC System",
+      "device_type": "hvac",
+      "location": "basement",
+      "current_power": 2100.0,
+      "total_energy_today": 25680.7,
+      "avg_power_last_24h": 1950.3,
+      "anomalies_last_24h": 2,
+      "status": "active"
+    },
+    {
+      "device_id": "device_004",
+      "device_name": "Kitchen Appliances",
+      "device_type": "appliances",
+      "location": "kitchen",
+      "current_power": 450.0,
+      "total_energy_today": 3420.8,
+      "avg_power_last_24h": 380.2,
+      "anomalies_last_24h": 0,
+      "status": "active"
+    },
+    {
+      "device_id": "device_005",
+      "device_name": "Smart Lighting",
+      "device_type": "lighting",
+      "location": "throughout",
+      "current_power": 180.0,
+      "total_energy_today": 1280.5,
+      "avg_power_last_24h": 165.8,
+      "anomalies_last_24h": 0,
+      "status": "active"
+    }
+  ],
+  "anomalies": [
+    {
+      "device_id": "device_001",
+      "timestamp": "2024-01-15T14:30:00Z",
+      "type": "power_spike",
+      "severity": "high",
+      "original_power": 1200.0,
+      "anomaly_power": 3500.0,
+      "confidence": 0.92,
+      "explanation": "Power consumption 2.9 standard deviations above normal - possible equipment malfunction"
+    },
+    {
+      "device_id": "device_003",
+      "timestamp": "2024-01-15T08:15:00Z",
+      "type": "trend",
+      "severity": "medium",
+      "original_power": 1800.0,
+      "anomaly_power": 2400.0,
+      "confidence": 0.78,
+      "explanation": "Sudden deviation from established usage trend - HVAC running longer than usual"
+    },
+    {
+      "device_id": "device_003",
+      "timestamp": "2024-01-15T22:45:00Z",
+      "type": "seasonal",
+      "severity": "low",
+      "original_power": 1500.0,
+      "anomaly_power": 2100.0,
+      "confidence": 0.65,
+      "explanation": "Unusual consumption for 10:45 PM - 1.4 std devs from normal for this time"
+    }
+  ],
+  "predictions": {
+    "device_001": [
+      {
+        "timestamp": "2024-01-15T16:00:00Z",
+        "predicted_power_w": 1280.5,
+        "confidence": 0.87,
+        "confidence_interval_lower": 1100.0,
+        "confidence_interval_upper": 1460.0
+      },
+      {
+        "timestamp": "2024-01-15T17:00:00Z",
+        "predicted_power_w": 1350.2,
+        "confidence": 0.82,
+        "confidence_interval_lower": 1150.0,
+        "confidence_interval_upper": 1550.0
+      },
+      {
+        "timestamp": "2024-01-15T18:00:00Z",
+        "predicted_power_w": 1420.8,
+        "confidence": 0.79,
+        "confidence_interval_lower": 1200.0,
+        "confidence_interval_upper": 1640.0
+      }
+    ]
+  },
+  "trends": [
+    {
+      "hour_ts": "2024-01-15T00:00:00Z",
+      "avg_power": 850.5,
+      "total_energy": 850.5
+    },
+    {
+      "hour_ts": "2024-01-15T01:00:00Z",
+      "avg_power": 820.3,
+      "total_energy": 1670.8
+    },
+    {
+      "hour_ts": "2024-01-15T02:00:00Z",
+      "avg_power": 780.1,
+      "total_energy": 2450.9
+    },
+    {
+      "hour_ts": "2024-01-15T03:00:00Z",
+      "avg_power": 750.8,
+      "total_energy": 3201.7
+    },
+    {
+      "hour_ts": "2024-01-15T04:00:00Z",
+      "avg_power": 720.2,
+      "total_energy": 3921.9
+    },
+    {
+      "hour_ts": "2024-01-15T05:00:00Z",
+      "avg_power": 680.5,
+      "total_energy": 4602.4
+    },
+    {
+      "hour_ts": "2024-01-15T06:00:00Z",
+      "avg_power": 720.8,
+      "total_energy": 5323.2
+    },
+    {
+      "hour_ts": "2024-01-15T07:00:00Z",
+      "avg_power": 850.2,
+      "total_energy": 6173.4
+    },
+    {
+      "hour_ts": "2024-01-15T08:00:00Z",
+      "avg_power": 1200.5,
+      "total_energy": 7373.9
+    },
+    {
+      "hour_ts": "2024-01-15T09:00:00Z",
+      "avg_power": 1350.8,
+      "total_energy": 8724.7
+    },
+    {
+      "hour_ts": "2024-01-15T10:00:00Z",
+      "avg_power": 1420.3,
+      "total_energy": 10145.0
+    },
+    {
+      "hour_ts": "2024-01-15T11:00:00Z",
+      "avg_power": 1380.7,
+      "total_energy": 11525.7
+    },
+    {
+      "hour_ts": "2024-01-15T12:00:00Z",
+      "avg_power": 1450.2,
+      "total_energy": 12975.9
+    },
+    {
+      "hour_ts": "2024-01-15T13:00:00Z",
+      "avg_power": 1520.8,
+      "total_energy": 14496.7
+    },
+    {
+      "hour_ts": "2024-01-15T14:00:00Z",
+      "avg_power": 3500.0,
+      "total_energy": 17996.7
+    },
+    {
+      "hour_ts": "2024-01-15T15:00:00Z",
+      "avg_power": 1280.5,
+      "total_energy": 19277.2
+    },
+    {
+      "hour_ts": "2024-01-15T16:00:00Z",
+      "avg_power": 1350.2,
+      "total_energy": 20627.4
+    },
+    {
+      "hour_ts": "2024-01-15T17:00:00Z",
+      "avg_power": 1420.8,
+      "total_energy": 22048.2
+    },
+    {
+      "hour_ts": "2024-01-15T18:00:00Z",
+      "avg_power": 1380.3,
+      "total_energy": 23428.5
+    },
+    {
+      "hour_ts": "2024-01-15T19:00:00Z",
+      "avg_power": 1320.7,
+      "total_energy": 24749.2
+    },
+    {
+      "hour_ts": "2024-01-15T20:00:00Z",
+      "avg_power": 1280.5,
+      "total_energy": 26029.7
+    },
+    {
+      "hour_ts": "2024-01-15T21:00:00Z",
+      "avg_power": 1150.8,
+      "total_energy": 27180.5
+    },
+    {
+      "hour_ts": "2024-01-15T22:00:00Z",
+      "avg_power": 1050.2,
+      "total_energy": 28230.7
+    },
+    {
+      "hour_ts": "2024-01-15T23:00:00Z",
+      "avg_power": 950.5,
+      "total_energy": 29181.2
+    }
+  ],
+  "chat_examples": [
+    {
+      "question": "Why was my usage high yesterday?",
+      "response": "I can see your energy usage was elevated yesterday, particularly around 2:30 PM when there was a significant power spike to 3,500W (normally around 1,200W). This appears to be caused by your main electrical panel. The spike lasted about 30 minutes and could indicate a malfunctioning appliance or equipment issue. I recommend checking your major appliances, especially any that were running during that time period.",
+      "confidence": 0.89,
+      "recommendations": [
+        {
+          "type": "maintenance",
+          "title": "Check Major Appliances",
+          "description": "Inspect appliances that were running around 2:30 PM",
+          "action": "Check refrigerator, HVAC system, and water heater for any issues",
+          "potential_savings": "$25-40/month"
+        }
+      ]
+    },
+    {
+      "question": "When is the cheapest time to run my dishwasher?",
+      "response": "Based on your usage patterns, the cheapest time to run your dishwasher would be between 10 PM and 6 AM when your overall power consumption is lowest (around 750-850W). Your current peak usage is between 1-3 PM, so avoiding that time period will help reduce costs. I also notice your energy rates are typically lower during off-peak hours.",
+      "confidence": 0.92,
+      "recommendations": [
+        {
+          "type": "cost_optimization",
+          "title": "Schedule Dishwasher for Off-Peak Hours",
+          "description": "Run dishwasher during low-usage periods",
+          "action": "Set dishwasher to run after 10 PM or before 6 AM",
+          "potential_savings": "$8-15/month"
+        }
+      ]
+    },
+    {
+      "question": "What's causing the energy spike?",
+      "response": "The energy spike at 2:30 PM was detected in your main electrical panel, reaching 3,500W compared to your normal 1,200W baseline. This represents a 192% increase in power consumption. The most likely causes are: 1) A malfunctioning appliance that suddenly drew excessive power, 2) Multiple high-energy devices running simultaneously, or 3) A short circuit or electrical issue. I recommend checking your HVAC system first, as it was running during that time and is your highest energy consumer.",
+      "confidence": 0.85,
+      "recommendations": [
+        {
+          "type": "immediate_action",
+          "title": "Check HVAC System",
+          "description": "Inspect HVAC system for malfunction",
+          "action": "Check filters, thermostat settings, and listen for unusual sounds",
+          "potential_savings": "$30-50/month"
+        }
+      ]
+    }
+  ]
+}
